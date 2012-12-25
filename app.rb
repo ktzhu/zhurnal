@@ -24,6 +24,11 @@ class App < Sinatra::Base
   use ScssEngine
   use CoffeeEngine
 
+  # Configure reloading for dev
+  configure :development do
+    register Sinatra::Reloader
+  end
+
   set :views, File.dirname(__FILE__) + '/views'
   set :public_folder, File.dirname(__FILE__) + '/public'
 
