@@ -1,0 +1,16 @@
+defaults: &defaults
+  host: localhost
+
+development:
+  sessions:
+    default:
+      database: zhurnal_dev
+      hosts:
+        - localhost:27017
+
+production:
+  host: <%= ENV['MONGOID_HOST'] %>
+  port: <%= ENV['MONGOID_PORT'] %>
+  username: <%= ENV['MONGOID_USERNAME'] %>
+  password: <%= ENV['MONGOID_PASSWORD'] %>
+  database: zhurnal_dev
