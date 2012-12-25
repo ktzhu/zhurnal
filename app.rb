@@ -34,7 +34,15 @@ class App < Sinatra::Base
   set :instagram_client_id, URI.parse(ENV['INSTAGRAM_CLIENT_ID'])
   set :instagram_client_secret, URI.parse(ENV['INSTAGRAM_CLIENT_SECRET'])
 
+  # Configure Instagram
+  Instagram.configure do |config|
+    config.client_id = settings.instagram_client_id
+    config.client_secret = settings.instagram_client_secret
+  end
+
   get '/' do
+    @cats = Instagram.tag_recent_media('zhugram')
+    @cats = @cats.data
     slim :index
   end
 
