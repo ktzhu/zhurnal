@@ -31,6 +31,8 @@ class App < Sinatra::Base
 
   set :views, File.dirname(__FILE__) + '/views'
   set :public_folder, File.dirname(__FILE__) + '/public'
+  set :instagram_client_id, URI.parse(ENV['INSTAGRAM_CLIENT_ID'])
+  set :instagram_client_secret, URI.parse(ENV['INSTAGRAM_CLIENT_SECRET'])
 
   get '/' do
     slim :index

@@ -7,6 +7,7 @@ gem 'bson_ext'
 gem 'slim'
 gem 'sass'
 gem 'coffee-script'
+gem 'instagram'
 
 group 'test' do
   gem 'rspec'

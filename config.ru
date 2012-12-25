@@ -1,4 +1,4 @@
-require 'rubygems'
+require 'uri'
 require 'sinatra/base'
 require 'sinatra/reloader'
 require 'mongoid'
