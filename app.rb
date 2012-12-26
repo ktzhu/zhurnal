@@ -42,16 +42,17 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    @cats = Instagram.tag_recent_media('zhugram')
-    @cats = @cats.data
-    @cats.each do |entry|
-      Photo.create(caption: entry.caption.text, url: entry.images.low_resolution.url)
-    end
+    @photos = Photo.all
     slim :index
   end
 
   get '/grams.json' do
     content_type :json
+    images = Instagram.tag_recent_media('zhugram')
+    images = images.data
+    images.each do |entry|
+      Photo.create(caption: entry.caption.text, url: entry.images.low_resolution.url)
+    end
     photos = Photo.all
     photos.to_json
   end

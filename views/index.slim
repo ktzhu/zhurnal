@@ -6,12 +6,8 @@ html
 
   body
     h1 hello, world
-    h2 = @cats.count
 
-    - @cats.each do |entry|
-      p = entry.caption.text
+    - @photos.each do |photo|
+      p = photo.caption
       .insta-img
-        img src=entry.images.low_resolution.url
-
-    p = @cats.first.caption.text
-    p = @cats.first.images.standard_resolution.url
+        img src=photo.url
