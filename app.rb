@@ -5,7 +5,7 @@ Mongoid.load!('mongoid.yml')
 # Assets
 
 class ScssEngine < Sinatra::Base
-  set :views, File.dirname(__FILE__) + '/assets/sass'
+  set :views, File.dirname(__FILE__) + '/assets/scss'
   get '/styles/*.css' do
     fname = params[:splat].first
     scss fname.to_sym
