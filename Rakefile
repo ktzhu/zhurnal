@@ -7,3 +7,4 @@ end
 
 task :spec => 'spec:all'
 task :default => :spec
+Dir["tasks/*.rake"].sort.each { |ext| load ext }
