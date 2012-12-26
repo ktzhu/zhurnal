@@ -42,7 +42,7 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    @photos = Photo.all
+    @photos = Photo.order_by(:created_at => :desc)
     slim :index
   end
 
