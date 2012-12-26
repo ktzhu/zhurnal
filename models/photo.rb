@@ -3,4 +3,6 @@ class Photo
 
   field :caption, type: String
   field :url, type: String
+
+  validates_uniqueness_of :url
 end

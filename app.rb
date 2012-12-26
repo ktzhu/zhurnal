@@ -21,6 +21,7 @@ class CoffeeEngine < Sinatra::Base
 end
 
 class App < Sinatra::Base
+  enable :sessions
   use ScssEngine
   use CoffeeEngine
 
@@ -43,6 +44,9 @@ class App < Sinatra::Base
   get '/' do
     @cats = Instagram.tag_recent_media('zhugram')
     @cats = @cats.data
+    @cats.each do |entry|
+      Photo.create(caption: entry.caption.text, url: entry.images.low_resolution.url)
+    end
     slim :index
   end
 
