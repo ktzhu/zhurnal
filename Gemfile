@@ -8,6 +8,7 @@ gem 'slim'
 gem 'sass'
 gem 'coffee-script'
 gem 'instagram'
+gem 'twitter'
 
 group 'test' do
   gem 'rspec'
