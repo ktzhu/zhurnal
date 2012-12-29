@@ -32,8 +32,13 @@ class App < Sinatra::Base
 
   set :views, File.dirname(__FILE__) + '/views'
   set :public_folder, File.dirname(__FILE__) + '/public'
-  set :instagram_client_id, URI.parse(ENV['INSTAGRAM_CLIENT_ID'])
-  set :instagram_client_secret, URI.parse(ENV['INSTAGRAM_CLIENT_SECRET'])
+  set :instagram_client_id, URI.parse(ENV['INSTAGRAM_CLIENT_ID']).to_s
+  set :instagram_client_secret, URI.parse(ENV['INSTAGRAM_CLIENT_SECRET']).to_s
+  set :twitter_consumer_key, URI.parse(ENV['TWITTER_CONSUMER_KEY']).to_s
+  set :twitter_consumer_secret, URI.parse(ENV['TWITTER_CONSUMER_SECRET']).to_s
+  set :twitter_oauth_token, URI.parse(ENV['TWITTER_OAUTH_TOKEN']).to_s
+  set :twitter_oauth_token_secret, URI.parse(ENV['TWITTER_OAUTH_TOKEN_SECRET']).to_s
+
 
   # Configure Instagram
   Instagram.configure do |config|
@@ -41,7 +46,20 @@ class App < Sinatra::Base
     config.client_secret = settings.instagram_client_secret
   end
 
+  # Configure Twitter
+  Twitter.configure do |config|
+    config.consumer_key = settings.twitter_consumer_key
+    config.consumer_secret = settings.twitter_consumer_secret
+    config.oauth_token = settings.twitter_oauth_token
+    config.oauth_token_secret = settings.twitter_oauth_token_secret
+  end
+
   get '/' do
+    begin
+      @tweets = Twitter.user_timeline('kzhu91')
+    rescue Twitter::Error => e
+      puts e
+    end
     @photos = Photo.order_by(:created_at => :desc)
     slim :index
   end

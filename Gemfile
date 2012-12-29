@@ -8,7 +8,8 @@ gem 'slim'
 gem 'sass'
 gem 'coffee-script'
 gem 'instagram'
-gem 'twitter'
+gem 'multi_json'
+gem 'twitter', git: 'https://github.com/sferik/twitter'
 
 group 'test' do
   gem 'rspec'
