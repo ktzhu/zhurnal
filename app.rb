@@ -55,11 +55,6 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    begin
-      @tweets = Twitter.user_timeline('kzhu91')
-    rescue Twitter::Error => e
-      puts e
-    end
     @photos = Photo.order_by(:created_at => :desc)
     slim :index
   end
@@ -73,6 +68,24 @@ class App < Sinatra::Base
     end
     photos = Photo.all
     photos.to_json
+  end
+
+  get '/tweets.json' do
+    content_type :json
+    begin
+      @tweets = Twitter.user_timeline('zhuuuba', count: 3000)
+      # @zhuisms = Twitter.search('#zhuisms -rt')
+      @tweets.each do |tweet|
+        if tweet.text.include? "dad"
+          Quote.create(content: tweet.text, speaker: 'Dad')
+        elsif tweet.text.include? "mom"
+          Quote.create(content: tweet.text, speaker: 'Mom')
+        end
+      end
+    rescue Twitter::Error => e
+      puts e
+    end
+    @tweets.to_json
   end
 
   not_found do
