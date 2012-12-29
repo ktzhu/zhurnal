@@ -56,6 +56,7 @@ class App < Sinatra::Base
 
   get '/' do
     @photos = Photo.order_by(:created_at => :desc)
+    @tweets = Quote.order_by(:created_at => :desc)
     slim :index
   end
 

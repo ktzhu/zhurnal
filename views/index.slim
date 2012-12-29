@@ -6,6 +6,10 @@ html
 
   body
     h1 hello, world
+    - unless @tweets.nil?
+      - @tweets.each do |tweet|
+        p = tweet.content
+        em = tweet.speaker
 
     - unless @photos.nil?
       - @photos.each do |photo|
