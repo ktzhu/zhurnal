@@ -39,7 +39,6 @@ class App < Sinatra::Base
   set :twitter_oauth_token, URI.parse(ENV['TWITTER_OAUTH_TOKEN']).to_s
   set :twitter_oauth_token_secret, URI.parse(ENV['TWITTER_OAUTH_TOKEN_SECRET']).to_s
 
-
   # Configure Instagram
   Instagram.configure do |config|
     config.client_id = settings.instagram_client_id
@@ -74,19 +73,32 @@ class App < Sinatra::Base
   get '/tweets.json' do
     content_type :json
     begin
-      @tweets = Twitter.user_timeline('zhuuuba', count: 3000)
+      @zhuuuba = Twitter.user_timeline('zhuuuba', count: 3000)
       # @zhuisms = Twitter.search('#zhuisms -rt')
-      @tweets.each do |tweet|
-        if tweet.text.include? "dad"
+      @zhuuuba.each do |tweet|
+        unless tweet.text.split.drop_while { |x| x != 'dad' }.empty?
           Quote.create(content: tweet.text, speaker: 'Dad')
-        elsif tweet.text.include? "mom"
+        end
+        unless tweet.text.split.drop_while { |x| x != 'mom' }
+          Quote.create(content: tweet.text, speaker: 'Mom').empty?
+        end
+      end
+
+      @kzhu91 = Twitter.user_timeline('kzhu91', count: 3000)
+      @kzhu91.each do |tweet|
+        unless tweet.text.gsub(/\,/,"").split.drop_while { |x| x != 'dad' }.empty?
+          Quote.create(content: tweet.text, speaker: 'Dad')
+          puts tweet.text
+        end
+        unless tweet.text.gsub(/\,/, "").split.drop_while { |x| x != 'mom' }.empty?
           Quote.create(content: tweet.text, speaker: 'Mom')
+          puts tweet.text
         end
       end
     rescue Twitter::Error => e
       puts e
     end
-    @tweets.to_json
+    @kzhu91.to_json
   end
 
   not_found do
