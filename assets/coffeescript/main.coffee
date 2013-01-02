@@ -1,3 +1,5 @@
-# $('#feed img').bind('load', -> @$.hide().fadeIn(600))
 $ ->
   $('#feed img').hide().fadeIn(900)
+  $('#tweetbar').hide().slideDown(600)
+  # $('#tweetwrapper').scrollTop
+  @

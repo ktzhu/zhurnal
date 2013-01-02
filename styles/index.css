@@ -50,8 +50,27 @@ body {
     margin: 0 auto; }
   #content #feed {
     margin: 20px auto; }
-  #content .mini-nav {
-    margin: 0 auto; }
+  #content #tweetbar {
+    overflow: scroll;
+    height: 60px;
+    width: 100%;
+    background: black;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.8;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 800;
+    text-align: center;
+    line-height: 2.5em;
+    font-size: 1.5em;
+    color: white; }
+    #content #tweetbar #tweetwrapper {
+      position: relative; }
+    #content #tweetbar li {
+      list-style-type: none;
+      display: inline-block;
+      width: 100%; }
 
 .caption {
   display: none; }
