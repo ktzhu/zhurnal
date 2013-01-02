@@ -1,2 +1,66 @@
-.insta-img img {
-  border-radius: 1000px; }
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, q, small, strong, sub, sup, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+article, aside, figure, figure img, figcaption, hgroup, footer, header, nav, section, video, object {
+  display: block; }
+
+a img {
+  border: 0; }
+
+figure {
+  position: relative; }
+
+figure img {
+  width: 100%; }
+
+/* Web Fonts
+font-family: 'Playfair Display', serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Abril Fatface', cursive;
+*/
+/* !!!!!! DESKTOP !!!!!!!! */
+body {
+  font-size: 11pt; }
+
+.header {
+  background: url(../img/headerstrip.png) repeat-x center;
+  text-align: center;
+  height: 177px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 4em;
+  color: #444444;
+  text-shadow: -1px -1px 1px black, 1px 1px 1px #cccccc; }
+  .header .text {
+    padding-top: 20px;
+    margin-bottom: -15px; }
+  .header .logo {
+    display: inline-block; }
+    .header .logo img {
+      max-width: 50%; }
+  .header span {
+    text-transform: uppercase;
+    font-weight: 800; }
+
+#content {
+  padding: 30px; }
+  #content .intro {
+    font-family: "Open Sans", sans-serif;
+    margin: 0 auto; }
+  #content #feed {
+    margin: 20px auto; }
+  #content .mini-nav {
+    margin: 0 auto; }
+
+.caption {
+  display: none; }
+
+.insta-img {
+  margin-top: 15px; }
+  .insta-img img {
+    border-radius: 1000px; }
+  .insta-img img:hover {
+    opacity: 0.5; }
+
+/* !!!!!! MOBILE !!!!!!!! */

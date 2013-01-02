@@ -1,3 +1,80 @@
+@import 'reset';
+@import 'colors';
+
+/* Web Fonts
+font-family: 'Playfair Display', serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Abril Fatface', cursive;
+*/
+
+
+/* !!!!!! DESKTOP !!!!!!!! */
+
+body {
+  font-size: 11pt;
+}
+
+.header {
+  background: url(../img/headerstrip.png) repeat-x center;
+  text-align: center;
+  height: 177px;
+  // font-family: 'Playfair Display', serif;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 4em;
+  color: $dark-grey;
+  text-shadow: -1px -1px 1px $black, 1px 1px 1px $light-grey;
+  .text {
+    padding-top: 20px;
+    margin-bottom: -15px;
+  }
+
+  .logo {
+    display: inline-block;
+    img { max-width: 50%; }
+  }
+
+  span {
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+}
+
+#content {
+  padding: 30px;
+
+  .intro {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
+  }
+
+  #feed {
+    margin: 20px auto;
+  }
+
+  .mini-nav {
+    margin: 0 auto;
+  }
+}
+
+.caption {
+  display: none;
+}
+
 .insta-img {
-  img { border-radius: 1000px; }
+  margin-top: 15px;
+  img {
+    border-radius: 1000px;
+  }
+
+  img:hover {
+    opacity: 0.5;
+  }
+}
+
+/* !!!!!! MOBILE !!!!!!!! */
+
+@media hanheld, only screen and (max-width: 767px) {
+  body {
+    // stylez
+  }
 }
